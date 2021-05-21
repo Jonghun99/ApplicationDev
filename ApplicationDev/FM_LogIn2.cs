@@ -7,23 +7,30 @@ namespace ApplicationDev
 {
     public partial class FM_Login2 : Form
     {
-        private int PWFailCount = 0;
         private SqlConnection Connect = null;      // 데이터베이스 접속 정보 
         private SqlTransaction Tran;               // 데이터베이스 관리 권한(BEGIN TRAN)
         private SqlCommand cmd = new SqlCommand(); // 데이터베이스 명령 전달
         public FM_Login2()
         {
             InitializeComponent();
+            this.Tag = "FAIL"; // 미리 테그에 "FAIL"값을 받아놓음 -> 에러 발생 차단
         }
 
+        private void btnPassword_Click(object sender, EventArgs e)
+        {
+            // 비밀번호 변경 화면 팝업을 호출한다.
+            this.Visible = false; // 로그인 화면을 보이지 않게 한다. 
+            FM_Password FmPassword = new FM_Password();
+            FmPassword.ShowDialog();
+            this.Visible = true; // Show()랑은 다르다(둘다 띄워서 작업 가능)
+        }
+
+        private int PWFailCount = 0;
 
         private void btnLogin_Click_1(object sender, EventArgs e)
         {
             try
             {
-                //this.Visible = false; // 로그인 화면을 보이지 않게 한다.
-                //FM_Password fm = new FM_Password(); // 비밀번호 변경 화면 협업을 호출한다
-                //fm.ShowDialog(); // Show()랑은 다르다(둘다 띄워서 작업 가능). SD는 비밀번호 변경화면을 닫지않은 이상 작업 불가능!
                 this.Visible = true;
                 string strCon = "Data Source=61.105.9.203; Initial Catalog=AppDev; User ID=kfqs;Password=1234";
                 Connect = new SqlConnection(strCon);
@@ -74,6 +81,7 @@ namespace ApplicationDev
                     MessageBox.Show("비밀번호가 3회 이상 틀렸습니다");
                     txtPW.Text = "";
                     this.Close();
+                    return;
                 }
 
                 else
@@ -89,6 +97,14 @@ namespace ApplicationDev
             finally
             {
                 Connect.Close();
+            }
+        }
+
+        private void txtPW_KeyDown(object sender, KeyEventArgs e) // 엔터키로 로그인
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Click_1(null, null);
             }
         }
     }

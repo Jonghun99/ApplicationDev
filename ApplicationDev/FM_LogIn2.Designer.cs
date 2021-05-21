@@ -69,6 +69,7 @@ namespace ApplicationDev
             this.txtPW.PasswordChar = '*';
             this.txtPW.Size = new System.Drawing.Size(225, 27);
             this.txtPW.TabIndex = 3;
+            this.txtPW.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPW_KeyDown);
             // 
             // btnPassword
             // 
@@ -78,6 +79,7 @@ namespace ApplicationDev
             this.btnPassword.TabIndex = 4;
             this.btnPassword.Text = "비밀번호 변경";
             this.btnPassword.UseVisualStyleBackColor = true;
+            this.btnPassword.Click += new System.EventHandler(this.btnPassword_Click);
             // 
             // btnLogin
             // 

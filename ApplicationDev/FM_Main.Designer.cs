@@ -33,6 +33,7 @@ namespace ApplicationDev
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.M_SYSTEM = new System.Windows.Forms.ToolStripMenuItem();
             this.MDI_TEST = new System.Windows.Forms.ToolStripMenuItem();
+            this.MDI_TEST2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.stbSearch = new System.Windows.Forms.ToolStripButton();
             this.stbInsert = new System.Windows.Forms.ToolStripButton();
@@ -64,7 +65,8 @@ namespace ApplicationDev
             // M_SYSTEM
             // 
             this.M_SYSTEM.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MDI_TEST});
+            this.MDI_TEST,
+            this.MDI_TEST2});
             this.M_SYSTEM.Name = "M_SYSTEM";
             this.M_SYSTEM.Size = new System.Drawing.Size(103, 24);
             this.M_SYSTEM.Text = "시스템 관리";
@@ -72,8 +74,14 @@ namespace ApplicationDev
             // MDI_TEST
             // 
             this.MDI_TEST.Name = "MDI_TEST";
-            this.MDI_TEST.Size = new System.Drawing.Size(172, 26);
+            this.MDI_TEST.Size = new System.Drawing.Size(180, 26);
             this.MDI_TEST.Text = "테스트 화면";
+            // 
+            // MDI_TEST2
+            // 
+            this.MDI_TEST2.Name = "MDI_TEST2";
+            this.MDI_TEST2.Size = new System.Drawing.Size(180, 26);
+            this.MDI_TEST2.Text = "테스트 화면2";
             // 
             // toolStrip
             // 
@@ -212,6 +220,7 @@ namespace ApplicationDev
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.MenuStrip);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.MenuStrip;
             this.Name = "FM_Main";
             this.Text = "ApplicationDev1.0";
@@ -244,5 +253,6 @@ namespace ApplicationDev
         private System.Windows.Forms.ToolStripStatusLabel tssUserName;
         private System.Windows.Forms.ToolStripStatusLabel tssNowDate;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem MDI_TEST2;
     }
 }
